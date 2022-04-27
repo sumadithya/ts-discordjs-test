@@ -1,6 +1,5 @@
 const fs = require('fs');
 const dotenv = require('dotenv');
-const { prefix } = require('./config.json');
 const Discord = require('discord.js');
 
 dotenv.config();
@@ -8,6 +7,7 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+const prefix = '!';
 
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
